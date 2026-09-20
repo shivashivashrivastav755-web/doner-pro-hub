@@ -14,7 +14,87 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      donors: {
+        Row: {
+          available: boolean
+          blood_group: string
+          city: string
+          created_at: string
+          full_name: string
+          id: string
+          last_donation: string | null
+          note: string | null
+          phone: string
+        }
+        Insert: {
+          available?: boolean
+          blood_group: string
+          city: string
+          created_at?: string
+          full_name: string
+          id?: string
+          last_donation?: string | null
+          note?: string | null
+          phone: string
+        }
+        Update: {
+          available?: boolean
+          blood_group?: string
+          city?: string
+          created_at?: string
+          full_name?: string
+          id?: string
+          last_donation?: string | null
+          note?: string | null
+          phone?: string
+        }
+        Relationships: []
+      }
+      requests: {
+        Row: {
+          blood_group: string
+          city: string
+          contact: string
+          created_at: string
+          expires_at: string
+          hospital: string | null
+          id: string
+          message: string | null
+          patient_ref: string
+          status: string
+          units: number
+          urgency: string
+        }
+        Insert: {
+          blood_group: string
+          city: string
+          contact: string
+          created_at?: string
+          expires_at?: string
+          hospital?: string | null
+          id?: string
+          message?: string | null
+          patient_ref: string
+          status?: string
+          units?: number
+          urgency?: string
+        }
+        Update: {
+          blood_group?: string
+          city?: string
+          contact?: string
+          created_at?: string
+          expires_at?: string
+          hospital?: string | null
+          id?: string
+          message?: string | null
+          patient_ref?: string
+          status?: string
+          units?: number
+          urgency?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
