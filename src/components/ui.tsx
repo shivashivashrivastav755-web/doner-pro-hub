@@ -62,8 +62,8 @@ export function SectionHeading({
 }: {
   eyebrow: string;
   title: ReactNode;
-  description?: ReactNode;
-  action?: ReactNode;
+  description?: ReactNode | undefined;
+  action?: ReactNode | undefined;
 }) {
   return (
     <div className="flex flex-col gap-5 border-b border-border pb-6 sm:flex-row sm:items-end sm:justify-between">
@@ -85,7 +85,7 @@ export function Panel({
   as: Tag = "div",
 }: {
   children: ReactNode;
-  className?: string;
+  className?: string | undefined;
   as?: "div" | "section" | "article" | "li";
 }) {
   return (

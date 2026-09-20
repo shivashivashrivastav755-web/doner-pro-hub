@@ -13,11 +13,11 @@ export function Field({
   className,
 }: {
   label: string;
-  hint?: ReactNode;
-  error?: string;
-  htmlFor?: string;
+  hint?: ReactNode | undefined;
+  error?: string | undefined;
+  htmlFor?: string | undefined;
   children: ReactNode;
-  className?: string;
+  className?: string | undefined;
 }) {
   return (
     <label htmlFor={htmlFor} className={cn("block", className)}>
@@ -35,7 +35,7 @@ export function TextInput({
   className,
   invalid,
   ...props
-}: InputHTMLAttributes<HTMLInputElement> & { invalid?: boolean }) {
+}: InputHTMLAttributes<HTMLInputElement> & { invalid?: boolean | undefined }) {
   return (
     <input
       className={cn(CONTROL, invalid && "border-critical focus:border-critical focus:ring-critical/30", className)}
@@ -60,7 +60,7 @@ export function CheckboxRow({
   checked: boolean;
   onChange: (next: boolean) => void;
   label: string;
-  hint?: string;
+  hint?: string | undefined;
 }) {
   return (
     <label className="flex cursor-pointer items-start gap-3 rounded-md border border-border bg-surface p-3 transition-colors hover:border-primary/40">
