@@ -10,33 +10,73 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as DonorsRouteImport } from './routes/donors'
+import { Route as HowItWorksRouteImport } from './routes/how-it-works'
+import { Route as RegisterRouteImport } from './routes/register'
+import { Route as RequestsRouteImport } from './routes/requests'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DonorsRoute = DonorsRouteImport.update({
+  id: '/donors',
+  path: '/donors',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HowItWorksRoute = HowItWorksRouteImport.update({
+  id: '/how-it-works',
+  path: '/how-it-works',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RegisterRoute = RegisterRouteImport.update({
+  id: '/register',
+  path: '/register',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RequestsRoute = RequestsRouteImport.update({
+  id: '/requests',
+  path: '/requests',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/donors': typeof DonorsRoute
+  '/how-it-works': typeof HowItWorksRoute
+  '/register': typeof RegisterRoute
+  '/requests': typeof RequestsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/donors': typeof DonorsRoute
+  '/how-it-works': typeof HowItWorksRoute
+  '/register': typeof RegisterRoute
+  '/requests': typeof RequestsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/donors': typeof DonorsRoute
+  '/how-it-works': typeof HowItWorksRoute
+  '/register': typeof RegisterRoute
+  '/requests': typeof RequestsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/donors' | '/how-it-works' | '/register' | '/requests'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/donors' | '/how-it-works' | '/register' | '/requests'
+  id: '__root__' | '/' | '/donors' | '/how-it-works' | '/register' | '/requests'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  DonorsRoute: typeof DonorsRoute
+  HowItWorksRoute: typeof HowItWorksRoute
+  RegisterRoute: typeof RegisterRoute
+  RequestsRoute: typeof RequestsRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +88,43 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/donors': {
+      id: '/donors'
+      path: '/donors'
+      fullPath: '/donors'
+      preLoaderRoute: typeof DonorsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/how-it-works': {
+      id: '/how-it-works'
+      path: '/how-it-works'
+      fullPath: '/how-it-works'
+      preLoaderRoute: typeof HowItWorksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/register': {
+      id: '/register'
+      path: '/register'
+      fullPath: '/register'
+      preLoaderRoute: typeof RegisterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/requests': {
+      id: '/requests'
+      path: '/requests'
+      fullPath: '/requests'
+      preLoaderRoute: typeof RequestsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  DonorsRoute: DonorsRoute,
+  HowItWorksRoute: HowItWorksRoute,
+  RegisterRoute: RegisterRoute,
+  RequestsRoute: RequestsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
